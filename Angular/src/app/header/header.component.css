@@ -1,0 +1,11 @@
+/* .imgHeader{
+  max-height: 50px;
+} */
+.brand{
+  height: 50px;
+  background-color: #E5E7E9;
+}
+.cards-container{
+  width: 60%;
+  margin: 50px auto;
+}

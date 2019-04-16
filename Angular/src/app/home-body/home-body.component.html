@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-md-3 col-md-6">
+      <br>
+      <input ngModel #Search="ngModel" name="Search"
+             type="text" class="form-control"
+             placeholder="Search..." (keyup)="SearchChange(Search)"
+             (keyup.enter)="Log()">
+    </div>
+  </div>
+  <!-- <h2>{{SearchText}}</h2> -->
+  <div class="cards-container">
+    <div class="row" *ngFor="let Obj of myObj">
+      <div class="offset-md-2 col-md-8">
+        <product-card [title]="Obj.title"
+                      [description]="Obj.description" [age]="Obj.age"
+                      [link]="Obj.link">
+        </product-card>
+
+      </div>
+    </div>
+  </div>
+
+</div>
