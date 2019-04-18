@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FeedComponent } from './feed/feed.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoute: Routes =[
   {
@@ -38,6 +39,7 @@ const appRoute: Routes =[
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoute)

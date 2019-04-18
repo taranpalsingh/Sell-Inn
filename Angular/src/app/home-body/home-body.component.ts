@@ -20,6 +20,7 @@ export class HomeBodyComponent implements OnInit {
     // all this time check the recommendations
   }
   Log(){
-    this.myObj = this.service.getProducts();
+    this.service.getProducts()
+      .subscribe(data => this.myObj = data);
   }
 }
