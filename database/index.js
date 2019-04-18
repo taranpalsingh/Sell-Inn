@@ -24,7 +24,8 @@ var productSchema = new mongoose.Schema({
   Age:String,
   descriptions:String,
   link:Array,
-  email:String
+  email:String,
+  keyword:Array
 
 });
 
@@ -39,7 +40,8 @@ var mylappy = new product({item:'Laptop',
                             Age:'2 days',
                             descriptions:'Works fine i guess',
                             link:['http1','http2','http3','http4'],
-                            email:'ts873'
+                            email:'ts873',
+                            keyword:['laptop','non-gaming','electronics','desktop']
                             });
 
 // mylappy.save(function (err, mylappy) {
@@ -54,6 +56,44 @@ var mylappy = new product({item:'Laptop',
 //          console.log(keyword);
 //         }
 // });
+
+
+app.post('/product',function(req,res){
+
+    var newProduct = new product(req.body);
+
+    newProduct.save(function (err,newProduct){
+
+      if (err)
+      {
+        return console.error(err);
+      }
+      else
+       {
+        console.log(newProduct);
+        res.send(newProduct);
+      }
+
+    })
+});
+
+
+app.get('/product/:keys',function(req,res){
+
+  var searchKeys = req.params.keys;
+  product.find({
+    keyword : {"$all" : searchKeys }
+  }).exec(function(err,product){
+    if(err)
+    console.log(err);
+    else
+    {
+      console.log(product);
+    }
+
+  });
+
+})
 
 app.get('/products',function(req,res){
 
