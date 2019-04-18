@@ -1,4 +1,6 @@
+// functions for random stuff
 
-function suggestor(var listOfNames,var input){
+
+function populate(){
     
 }
