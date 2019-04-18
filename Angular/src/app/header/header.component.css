@@ -9,3 +9,12 @@
   width: 60%;
   margin: 50px auto;
 }
+.modal-body .row{
+  margin: 10px;
+}
+textarea{
+  resize: none;
+}
+.reqd{
+  color: red;
+}

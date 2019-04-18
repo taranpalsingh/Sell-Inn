@@ -8,6 +8,8 @@ import { HomeBodyComponent } from './home-body/home-body.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FeedComponent } from './feed/feed.component';
+import { ProductPageComponent } from './product-page/product-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoute: Routes =[
   {
@@ -17,6 +19,10 @@ const appRoute: Routes =[
   {
     path: 'home',
     component: FeedComponent
+  },
+  {
+    path: 'product/:pId',
+    component: ProductPageComponent
   }
 ];
 @NgModule({
@@ -25,12 +31,14 @@ const appRoute: Routes =[
     HeaderComponent,
     HomeBodyComponent,
     ProductCardComponent,
-    FeedComponent
+    FeedComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoute)
   ],

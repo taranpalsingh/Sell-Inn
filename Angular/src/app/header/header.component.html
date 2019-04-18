@@ -25,10 +25,8 @@
   </div>
 </nav>
 
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button> -->
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -41,11 +39,78 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form #f="ngForm">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="Id">
+                <span class="reqd">*</span>
+                ID :
+              </label>
+            </div>
+            <div class="col-md-8">
+              <input ngModel name="pId" #pId="ngModel"
+                     type="number" class="form-control">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <label for="title">
+                <span class="reqd">*</span>
+                Title :
+              </label>
+            </div>
+            <div class="col-md-8">
+              <input ngModel name="title" #title="ngModel"
+                     type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="age">
+                <span class="reqd">*</span>
+                Age :
+              </label>
+            </div>
+            <div class="col-md-8">
+              <input ngModel name="age" #age="ngModel"
+                     type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="description">
+                <span class="reqd">*</span>
+                Description :
+              </label>
+            </div>
+            <div class="col-md-8">
+              <textarea ngModel  #description="ngModel"
+                        class="form-control" name="description"
+                        cols="30" rows="3">
+              </textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="link">
+                <span class="reqd">*</span>
+                Link :
+              </label>
+            </div>
+            <div class="col-md-8">
+              <input ngModel name="link" #link="ngModel"
+                     type="text" class="form-control">
+            </div>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-primary"
+                (click)="Add(f)" data-dismiss="modal">
+                ADD
+        </button>
       </div>
     </div>
   </div>

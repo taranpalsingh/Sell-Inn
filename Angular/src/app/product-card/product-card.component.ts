@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'product-card',
@@ -6,23 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-  @Input() title: String;
-  @Input() age: String;
-  @Input() description: String;
-  @Input() link: String;
 
-  constructor() { }
+  @Input() myOBJ;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    // this.title="GOT";
-    // this.age="8";
-    // this.description="Bestest";
-    // this.link="https";
-    console.log(this.title);
-    console.log(this.age);
-    console.log(this.description);
-    console.log(this.link);
+    // console.log(this.myOBJ);
   }
 
-
+  goToProduct(pId){
+    this.router.navigate(['/product',pId]);
+  }
 }

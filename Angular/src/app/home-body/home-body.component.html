@@ -8,14 +8,20 @@
              (keyup.enter)="Log()">
     </div>
   </div>
-  <!-- <h2>{{SearchText}}</h2> -->
+
+
   <div class="cards-container">
-    <div class="row" *ngFor="let Obj of myObj">
+    <!-- <div class="row" *ngFor="let Obj of myObj">
       <div class="offset-md-2 col-md-8">
-        <product-card [title]="Obj.title"
-                      [description]="Obj.description" [age]="Obj.age"
-                      [link]="Obj.link">
-        </product-card>
+
+        <product-card [myOBJ]="Obj"></product-card>
+
+      </div>
+    </div> -->
+    <div class="row">
+      <div  *ngFor="let Obj of myObj" class="col-md-4 text-center">
+
+        <product-card [myOBJ]="Obj"></product-card>
 
       </div>
     </div>
