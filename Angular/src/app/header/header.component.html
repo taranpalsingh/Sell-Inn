@@ -40,18 +40,6 @@
       </div>
       <div class="modal-body">
         <form #f="ngForm">
-          <div class="row">
-            <div class="col-md-4">
-              <label for="Id">
-                <span class="reqd">*</span>
-                ID :
-              </label>
-            </div>
-            <div class="col-md-8">
-              <input ngModel name="pId" #pId="ngModel"
-                     type="number" class="form-control">
-            </div>
-          </div>
 
           <div class="row">
             <div class="col-md-4">
@@ -61,7 +49,31 @@
               </label>
             </div>
             <div class="col-md-8">
-              <input ngModel name="title" #title="ngModel"
+              <input ngModel name="item" #item="ngModel"
+                     type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="title">
+                <span class="reqd">*</span>
+                Keyword :
+              </label>
+            </div>
+            <div class="col-md-8">
+              <input ngModel name="keyword" #keyword="ngModel"
+                     type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="title">
+                <span class="reqd">*</span>
+                Email :
+              </label>
+            </div>
+            <div class="col-md-8">
+              <input ngModel name="email" #email="ngModel"
                      type="text" class="form-control">
             </div>
           </div>

@@ -7,16 +7,20 @@
     <div class="offset-md-1 col-md-4">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-
-          <li *ngFor="let link of myObj.links; first as isFirst" data-target="#carouselExampleIndicators"
-               data-slide-to="0" [class.active]="isFirst"></li>
-
+          <ng-container *ngIf="received">
+            <li *ngFor="let link of myObj.link; first as isFirst" data-target="#carouselExampleIndicators"
+                 data-slide-to="0" [class.active]="isFirst">
+            </li>
+          </ng-container>
         </ol>
         <div class="carousel-inner">
 
-          <div class="carousel-item" [class.active]="isFirst" *ngFor="let link of myObj.links; first as isFirst">
-            <img [src]="link" class="d-block" alt="">
-          </div>
+          <ng-container *ngIf="received">
+
+            <div class="carousel-item" [class.active]="isFirst" *ngFor="let link of myObj.link; first as isFirst">
+              <img [src]="link" class="d-block" alt="">
+            </div>
+          </ng-container>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -29,26 +33,29 @@
       </div>
     </div>
     <div class="offset-md-1 col-md-5 ProductDescription">
+      <ng-container *ngIf="received">
 
-      <div class="row text-center">
-        <h1>{{myObj.title}}</h1>
-      </div>
-      <div class="row">
-        <div class="col-md-6 text-right">
-          <h4>Age: </h4>
+        <div class="row text-center">
+          <h1>{{myObj.item}}</h1>
         </div>
-        <div class="col-md-6 text-left">
-          <p>{{myObj.age}}</p>
+        <div class="row">
+          <div class="col-md-6 text-right">
+            <h4>Age: </h4>
+          </div>
+          <div class="col-md-6 text-left">
+            <p>{{myObj.Age}}</p>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 text-right">
-          <h4>About: </h4>
+        <div class="row">
+          <div class="col-md-6 text-right">
+            <h4>About: </h4>
+          </div>
+          <div class="col-md-6 text-left">
+            <p>{{myObj.descriptions}}</p>
+          </div>
         </div>
-        <div class="col-md-6 text-left">
-          <p>{{myObj.description}}</p>
-        </div>
-      </div>
+
+      </ng-container>
     </div>
   </div>
 </div>

@@ -9,22 +9,27 @@ import { ProductsService } from '../products.service';
 })
 export class ProductPageComponent implements OnInit {
 
-  pId: number;
+  _id: String;
   array = ['d','f','g'];
   myObj: Object;
+  received: Number = 0 ; // If data is received or not
 
   constructor(private route: ActivatedRoute,
               private service: ProductsService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      // this._id = +params['_id']; // (+) converts string 'id' to a number
+      this._id = params['_id']; // (+) converts string 'id' to a number
+      console.log(this._id);
 
-
-      this.pId = +params['pId']; // (+) converts string 'id' to a number
-      console.log(params['pId']);
-
-      this.myObj = this.service.getProduct(this.pId);
-      console.log(this.myObj);
+      this.service.getProductById(this._id)
+        .subscribe(data => {
+          this.myObj = data
+          this.received = 1;
+          console.log(this.myObj);
+        });
+      // console.log(this.myObj);
     });
   }
 

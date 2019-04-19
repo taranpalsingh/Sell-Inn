@@ -22,7 +22,7 @@ const appRoute: Routes =[
     component: FeedComponent
   },
   {
-    path: 'product/:pId',
+    path: 'product/:_id',
     component: ProductPageComponent
   }
 ];

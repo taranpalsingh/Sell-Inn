@@ -36,13 +36,13 @@ var keywordSchema = new mongoose.Schema({
 var product = mongoose.model('product',productSchema);
 var keyword = mongoose.model('keyword',keywordSchema);
 
-var mylappy = new product({item:'Laptop',
-                            Age:'2 days',
-                            descriptions:'Works fine i guess',
-                            link:['http1','http2','http3','http4'],
-                            email:'ts873',
-                            keyword:['laptop','non-gaming','electronics','desktop']
-                            });
+// var mylappy = new product({item:'Laptop',
+//                             Age:'2 days',
+//                             descriptions:'Works fine i guess',
+//                             link:['http1','http2','http3','http4'],
+//                             email:'ts873',
+//                             keyword:['laptop','non-gaming','electronics','desktop']
+//                             });
 
 // mylappy.save(function (err, mylappy) {
 //     if (err) return console.error(err);
@@ -75,10 +75,32 @@ app.post('/product',function(req,res){
       }
 
     })
+
+    // var newKeyword = new keyword(req.body.keyword
+    // keyword.save(
+});
+
+app.get('/remove/:id',function(req,res){
+
+    console.log(req.params.id);
+    product.remove(
+      { _id : req.params.id},(function (err,newProduct){
+
+      if (err)
+      {
+        return console.error(err);
+      }
+      else
+       {
+        console.log(newProduct);
+        res.send(newProduct);
+      }
+
+    }));
 });
 
 
-app.get('/product/:keys',function(req,res){
+app.get('/productByKey/:keys',function(req,res){
 
   var searchKeys = req.params.keys;
   product.find({
@@ -88,6 +110,25 @@ app.get('/product/:keys',function(req,res){
     console.log(err);
     else
     {
+
+      res.send(product);
+      console.log(product);
+    }
+
+  });
+
+})
+
+app.get('/productById/:id',function(req,res){
+
+  console.log(req.params.id);
+  product.findById(req.params.id)
+    .exec(function(err,product){
+    if(err)
+    console.log(err);
+    else
+    {
+      res.send(product);
       console.log(product);
     }
 

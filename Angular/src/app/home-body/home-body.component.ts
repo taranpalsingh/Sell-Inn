@@ -21,6 +21,9 @@ export class HomeBodyComponent implements OnInit {
   }
   Log(){
     this.service.getProducts()
-      .subscribe(data => this.myObj = data);
+      .subscribe(data => {
+        this.myObj = data
+        console.log(this.myObj);
+      });
   }
 }

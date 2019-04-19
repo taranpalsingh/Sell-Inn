@@ -1,8 +1,10 @@
 export interface Iproducts{
 
-  pId: Number,
-  title: String,
-  description: String,
-  age: String,
-  links: Array<String>
+  item:String,
+  Age:String,
+  descriptions:String,
+  link:Array<String>,
+  email:String,
+  keyword:Array<String>
+
 }

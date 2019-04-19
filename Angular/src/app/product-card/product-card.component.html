@@ -16,10 +16,10 @@
  -->
 
 <div class="card" style="width: 18rem;">
-  <img src="/../../assets/logo2.jpg" class="card-img-top cardImg" alt="...">
+  <img [src]="myOBJ.link[0]" class="card-img-top cardImg" alt="...">
   <div class="card-body">
-    <!-- <h5 class="card-title">{{myOBJ.title}}</h5> -->
+    <!-- <h5 class="card-title">{{myOBJ._id}}</h5> -->
     <!-- <p class="card-text">{{myOBJ.description}}</p> -->
-    <a (click)="goToProduct(myOBJ.pId)" class="btn btn-block btnLink btn-primary">{{myOBJ.title}}</a>
+    <a (click)="goToProduct(myOBJ._id)" class="btn btn-block btnLink btn-primary">{{myOBJ.item}}</a>
   </div>
 </div>
