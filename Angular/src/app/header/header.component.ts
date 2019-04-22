@@ -20,9 +20,9 @@ export class HeaderComponent implements OnInit{
       item: f.value.item,
       Age: f.value.age,
       email: f.value.email,
-      keyword: f.value.keyword.split(','),
+      keyword: f.value.keyword.split(';'),
       descriptions: f.value.description,
-      link: f.value.link.split(',')
+      link: f.value.link.split(';')
     }
     console.log(this.obj);
     this.service.addProduct(this.obj)

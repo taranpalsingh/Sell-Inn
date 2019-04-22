@@ -3,8 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/sellInn', {useNewUrlParser: true});
+// mongoose.connect('mongodb://localhost:27017/sellInn', {useNewUrlParser: true});
 
+mongoose.connect('mongodb+srv://kalpriksh-bist:kaybee7697@sell-inn-ald6b.mongodb.net/test?retryWrites=true', {useNewUrlParser: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
