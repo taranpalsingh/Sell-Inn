@@ -1,10 +1,10 @@
 export interface Iproducts{
 
   item:String,
-  Age:String,
-  descriptions:String,
+  age:String,
+  description:String,
   link:Array<String>,
   email:String,
-  keyword:Array<String>
+  keywords:Array<String>
 
 }

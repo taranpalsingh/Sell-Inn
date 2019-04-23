@@ -1,0 +1,8 @@
+#suggestionsList{
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+#NoResults{
+  margin: 200px auto;
+}

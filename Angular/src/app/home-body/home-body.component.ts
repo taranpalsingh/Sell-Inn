@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ProductsService } from '../products.service';
 
 @Component({
@@ -6,24 +6,53 @@ import { ProductsService } from '../products.service';
   templateUrl: './home-body.component.html',
   styleUrls: ['./home-body.component.css']
 })
-export class HomeBodyComponent implements OnInit {
+export class HomeBodyComponent implements OnInit{
 
-  SearchText: String;
+  edit: boolean;
+  SearchInput: String;
   myObj: Object;
+  suggestions: any[];
+
   constructor(private service: ProductsService) { }
 
-  ngOnInit() {
-  }
-
-  SearchChange(Search: HTMLInputElement){
-    this.SearchText = Search.value;
-    // all this time check the recommendations
-  }
-  Log(){
+  ngOnInit(){
     this.service.getProducts()
       .subscribe(data => {
-        this.myObj = data
-        console.log(this.myObj);
-      });
+        this.myObj = data;
+      })
   }
+  SearchChange(Search: HTMLInputElement){
+    if(this.SearchInput != ""){
+      this.service.getSuggestions(this.SearchInput)
+        .subscribe((data: any[])  => {
+          let s = [];
+          data.map(function(element){
+            s.push(String(element.name));
+          })
+          this.suggestions = s;
+      })
+    }
+  }
+
+  selectSuggestion(item){
+    this.SearchInput = item;
+    console.log("Inside suggestions");
+
+    this.service.getProductByKey(item)
+      .subscribe(data => {
+        this.myObj = data;
+      })
+  }
+
+  edit2(){
+
+    setTimeout( () => {
+      console.log("Inside Edit2()");
+      console.log(this.edit);
+      this.edit = false;
+      console.log(this.edit);
+    }, 100);
+
+  }
+
 }

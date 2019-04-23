@@ -2,23 +2,25 @@
   <div class="row">
     <div class="offset-md-3 col-md-6">
       <br>
-      <input ngModel #Search="ngModel" name="Search"
-             type="text" class="form-control"
+
+      <input [(ngModel)]="SearchInput" #Search="ngModel" name="Search"
+             type="text" class="form-control" id="SearchTag"
              placeholder="Search..." (keyup)="SearchChange(Search)"
-             (keyup.enter)="Log()">
+             (keyup.enter)="Log(Search)"  (focus)="edit=true" (blur)="edit2()">
+<!-- (blur)="edit=false" -->
+      <div *ngIf="edit" id="suggestionsList">
+        <ul class="list-group">
+          <li *ngFor="let suggestion of suggestions" class="list-group-item" (click)="selectSuggestion(suggestion)">
+            {{suggestion}}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 
-
   <div class="cards-container">
-    <!-- <div class="row" *ngFor="let Obj of myObj">
-      <div class="offset-md-2 col-md-8">
-
-        <product-card [myOBJ]="Obj"></product-card>
-
-      </div>
-    </div> -->
     <div class="row">
+      <h2 *ngIf="myObj?.length == 0" id="NoResults"> No results Found </h2>
       <div  *ngFor="let Obj of myObj" class="col-md-4 text-center">
 
         <product-card [myOBJ]="Obj"></product-card>
@@ -26,5 +28,4 @@
       </div>
     </div>
   </div>
-
 </div>

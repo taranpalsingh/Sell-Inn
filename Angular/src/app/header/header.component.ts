@@ -18,10 +18,10 @@ export class HeaderComponent implements OnInit{
     console.log(f);
     this.obj={
       item: f.value.item,
-      Age: f.value.age,
+      age: f.value.age,
       email: f.value.email,
-      keyword: f.value.keyword.split(';'),
-      descriptions: f.value.description,
+      keywords: f.value.keyword.split(';'),
+      description: f.value.description,
       link: f.value.link.split(';')
     }
     console.log(this.obj);

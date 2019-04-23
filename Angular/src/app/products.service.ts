@@ -25,4 +25,11 @@ export class ProductsService {
     console.log(obj);
     return this.http.post(this.url+'product', obj);
   }
+  getSuggestions(char){
+    return this.http.get(this.url+'suggestions/'+char);
+  }
+  getProductByKey(key: String){
+    console.log(key);
+    return this.http.get(this.url+'productByKey/'+key);
+  }
 }
