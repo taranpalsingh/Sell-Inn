@@ -12,13 +12,17 @@ export class HomeBodyComponent implements OnInit{
   SearchInput: String;
   myObj: Object;
   suggestions: any[];
-
+  error = null;
   constructor(private service: ProductsService) { }
 
   ngOnInit(){
     this.service.getProducts()
       .subscribe(data => {
         this.myObj = data;
+      },
+      (error: String) => {
+        this.error = error;
+        //console.log(error);
       })
   }
   SearchChange(Search: HTMLInputElement){
@@ -30,27 +34,35 @@ export class HomeBodyComponent implements OnInit{
             s.push(String(element.name));
           })
           this.suggestions = s;
+      },
+      error => {
+        this.error = error;
+        //console.log(error);
       })
     }
   }
 
   selectSuggestion(item){
     this.SearchInput = item;
-    console.log("Inside suggestions");
+    //console.log("Inside suggestions");
 
     this.service.getProductByKey(item)
       .subscribe(data => {
         this.myObj = data;
+      },
+      error => {
+        this.error = error;
+        //console.log(error);
       })
   }
 
   edit2(){
 
     setTimeout( () => {
-      console.log("Inside Edit2()");
-      console.log(this.edit);
+      //console.log("Inside Edit2()");
+      //console.log(this.edit);
       this.edit = false;
-      console.log(this.edit);
+      //console.log(this.edit);
     }, 100);
 
   }

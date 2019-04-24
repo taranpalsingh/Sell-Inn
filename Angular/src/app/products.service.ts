@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Iproducts } from './Products';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http'
+// import { Iproducts } from './Products';
+import { Observable, throwError } from 'rxjs';
+import  { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,24 +13,42 @@ export class ProductsService {
   private url="http://localhost:3000/";
   constructor(private http: HttpClient) { }
 
-  // getProducts(): Observable<Iproducts>{
-    // return this.http.get(this.url+'products')
   getProducts(){
-    return this.http.get(this.url+'products');
+    return this.http.get(this.url+'products')
+      .pipe(
+        catchError(this.handleError)
+      )
   }
   getProductById(_id: String){
     console.log(_id);
-    return this.http.get(this.url+'productById/'+_id);
+    return this.http.get(this.url+'productById/'+_id)
+      .pipe(
+        catchError(this.handleError)
+      )
   }
   addProduct(obj){
-    console.log(obj);
-    return this.http.post(this.url+'product', obj);
+    return this.http.post(this.url+'product', obj)
+      .pipe(
+        catchError(this.handleError)
+      )
   }
   getSuggestions(char){
-    return this.http.get(this.url+'suggestions/'+char);
+    return this.http.get(this.url+'suggestions/'+char)
+      .pipe(
+        catchError(this.handleError)
+      )
   }
   getProductByKey(key: String){
-    console.log(key);
-    return this.http.get(this.url+'productByKey/'+key);
+    return this.http.get(this.url+'productByKey/'+key)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+  private handleError(error: HttpErrorResponse){
+    console.log("Inside Error Handler: "+ error.status);
+    if(error.status === 404)
+      return throwError("Something went wrong");
+    else
+      return throwError("some other error");
   }
 }
